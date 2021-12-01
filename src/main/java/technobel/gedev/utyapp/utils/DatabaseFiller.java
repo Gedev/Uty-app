@@ -60,6 +60,22 @@ public class DatabaseFiller implements InitializingBean {
         st.setBirthdate("11201992");
         studentRepository.save( st );
 
+        st = new Student();
+        st.setUsername("Samirah");
+        st.setPassword( encoder.encode("pass")) ;
+        st.setFirstname("Samirah");
+        st.setLastname("Masimina");
+        st.setBirthdate("11201992");
+        studentRepository.save( st );
+
+        st = new Student();
+        st.setUsername("Pacifique");
+        st.setPassword( encoder.encode("pass")) ;
+        st.setFirstname("Pacifique");
+        st.setLastname("NGabo");
+        st.setBirthdate("11201992");
+        studentRepository.save( st );
+
         Professor p = new Professor();
         p.setUsername("professor01");
         p.setPassword( encoder.encode("pass")) ;
