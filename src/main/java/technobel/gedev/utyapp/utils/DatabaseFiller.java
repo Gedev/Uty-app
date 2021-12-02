@@ -3,15 +3,14 @@ package technobel.gedev.utyapp.utils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 import technobel.gedev.utyapp.models.entity.Classroom;
+import technobel.gedev.utyapp.models.entity.ClassroomReservation;
 import technobel.gedev.utyapp.models.entity.Professor;
 import technobel.gedev.utyapp.models.entity.Student;
 import technobel.gedev.utyapp.repository.ClassroomRepository;
+import technobel.gedev.utyapp.repository.ClassroomReservationRepository;
 import technobel.gedev.utyapp.repository.ProfessorRepository;
 import technobel.gedev.utyapp.repository.StudentRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import javax.persistence.Column;
-import java.util.List;
 
 @Component
 public class DatabaseFiller implements InitializingBean {
@@ -20,18 +19,21 @@ public class DatabaseFiller implements InitializingBean {
     private final PasswordEncoder encoder;
     private final ProfessorRepository professorRepository;
     private final ClassroomRepository classroomRepository;
+    private final ClassroomReservationRepository clrRepository;
 
-    public DatabaseFiller(StudentRepository studentRepository, PasswordEncoder encoder, ProfessorRepository professorRepository, ClassroomRepository classroomRepository) {
+    public DatabaseFiller(StudentRepository studentRepository, PasswordEncoder encoder, ProfessorRepository professorRepository, ClassroomRepository classroomRepository, ClassroomReservationRepository clrRepository) {
         this.studentRepository = studentRepository;
         this.professorRepository = professorRepository;
         this.classroomRepository = classroomRepository;
         this.encoder = encoder;
+        this.clrRepository = clrRepository;
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
         saveUsers();
         saveClassrooms();
+        saveClassroomsReservations();
     }
 
     public void saveUsers(){
@@ -99,8 +101,9 @@ public class DatabaseFiller implements InitializingBean {
         p.setLastname("Omb");
         p.setBirthdate("11201992");
         professorRepository.save( p );
+
         } catch(Exception e){
-            System.out.println("A problem in the databasefille occured");
+            System.out.println("A problem occured in the databasefiller");
         }
     }
 
@@ -116,4 +119,11 @@ public class DatabaseFiller implements InitializingBean {
         classroomRepository.save( cl );
     }
 
+    public void saveClassroomsReservations() {
+        ClassroomReservation clr = new ClassroomReservation();
+        clr.setRoom_num("101");
+        clr.setStart_time(830);
+        clr.setEnd_time(1030);
+        clrRepository.save( clr );
+    }
 }

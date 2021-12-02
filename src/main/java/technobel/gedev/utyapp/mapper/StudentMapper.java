@@ -7,7 +7,7 @@ import technobel.gedev.utyapp.models.forms.StudentForm;
 
 @Service
 public class StudentMapper {
-    public StudentDTO toDto(Student studentEntity){
+    public StudentDTO toDto(Student studentEntity) {
 
         if(studentEntity == null)
             return null;
@@ -21,7 +21,7 @@ public class StudentMapper {
                 .build();
     }
 
-    public Student formToEntity(StudentForm form){
+    public Student formToEntity(StudentForm form) {
         if( form == null )
             return null;
 
@@ -29,7 +29,6 @@ public class StudentMapper {
 //        student.getUsername(form.getUsername());
 //        student.getFirstname(form.getFirstname());
 //        student.getLastname(form.getLastname());
-
         return student;
     }
 }

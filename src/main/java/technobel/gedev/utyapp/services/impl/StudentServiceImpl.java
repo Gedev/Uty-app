@@ -46,8 +46,10 @@ public class StudentServiceImpl implements StudentService {
                 .orElseThrow(ElementNotFoundException::new);
 
         toUpdate.setUsername(form.getUsername());
+        toUpdate.setPassword(form.getPassword());
         toUpdate.setFirstname(form.getFirstname());
         toUpdate.setLastname(form.getLastname());
+        toUpdate.setBirthdate(form.getBirthdate());
 
         return mapper.toDto(toUpdate);
     }
