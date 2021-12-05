@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "classroom_reservation")
 @Getter @Setter
 public class ClassroomReservation {
 
@@ -22,7 +23,7 @@ public class ClassroomReservation {
     @Column
     private int end_time;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "professor_id")
     private Professor professor;
 }

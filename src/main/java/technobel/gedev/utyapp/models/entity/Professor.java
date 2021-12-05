@@ -11,10 +11,10 @@ import java.util.List;
 @Getter @Setter
 public class Professor extends User {
 
-    @Column
+    @Column(nullable = true)
     private Integer hire_date;
 
-    @OneToMany(mappedBy = "professor")
+    @OneToMany(mappedBy = "professor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ClassroomReservation> classroomReservation;
 
 //      @ElementCollection(fetch = FetchType.EAGER)

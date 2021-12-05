@@ -10,6 +10,7 @@ import technobel.gedev.utyapp.repository.ClassroomReservationRepository;
 import technobel.gedev.utyapp.services.spec.ClassroomReservationService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ClassroomReservationServiceImpl implements ClassroomReservationService {
@@ -31,7 +32,10 @@ public class ClassroomReservationServiceImpl implements ClassroomReservationServ
 
     @Override
     public List<ClassroomReservationDTO> getAll() {
-        return null;
+        return clrRepository.findAll()
+                .stream()
+                .map(clrMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override

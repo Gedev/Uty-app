@@ -30,16 +30,15 @@ public class DatabaseFiller implements InitializingBean {
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         saveUsers();
         saveClassrooms();
         saveClassroomsReservations();
     }
 
     public void saveUsers(){
-        try {
         Student st = new Student();
-        st.setUsername("John");
+        st.setUsername("Johnn");
         st.setPassword( encoder.encode("pass")) ;
         st.setFirstname("John");
         st.setLastname("Doe");
@@ -101,10 +100,6 @@ public class DatabaseFiller implements InitializingBean {
         p.setLastname("Omb");
         p.setBirthdate("11201992");
         professorRepository.save( p );
-
-        } catch(Exception e){
-            System.out.println("A problem occured in the databasefiller");
-        }
     }
 
     /*

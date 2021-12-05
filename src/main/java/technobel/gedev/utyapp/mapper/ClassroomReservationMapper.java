@@ -3,6 +3,7 @@ package technobel.gedev.utyapp.mapper;
 import org.springframework.stereotype.Service;
 import technobel.gedev.utyapp.models.dto.ClassroomReservationDTO;
 import technobel.gedev.utyapp.models.entity.ClassroomReservation;
+import technobel.gedev.utyapp.models.entity.Professor;
 
 @Service
 public class ClassroomReservationMapper {
@@ -12,11 +13,19 @@ public class ClassroomReservationMapper {
 
         return ClassroomReservationDTO.builder()
                 .id(clrEntity.getId())
-                .professor_id(clrEntity.getProfessor().getHire_date())
                 .room_num(clrEntity.getRoom_num())
                 .start_time(clrEntity.getStart_time())
                 .end_time(clrEntity.getEnd_time())
-                .professor_id(clrEntity.getProfessor().getId())
+                .professor(toInnerDTO(clrEntity.getProfessor()))
+                .build();
+    }
+
+    private ClassroomReservationDTO.ProfessorDTO toInnerDTO(Professor entity){
+        if( entity == null )
+            return null;
+
+        return ClassroomReservationDTO.ProfessorDTO.builder()
+                .username( entity.getUsername() )
                 .build();
     }
 }

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Getter @Setter
 public class Student extends User {
 
-    @Column(name="acquitted_of_school_fees")
+    @Column(name="acquitted_of_school_fees", nullable = true)
     private String acquitted_of_school_fees;
 
 }
