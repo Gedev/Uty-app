@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.sql.Date;
 
 @Entity
 @Table(name = "administrative")
@@ -13,5 +14,5 @@ import javax.persistence.Table;
 public class Administrative extends User {
 
     @Column
-    private Integer hire_date;
+    private Date hire_date;
 }

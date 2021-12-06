@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -12,7 +13,7 @@ import java.util.List;
 public class Professor extends User {
 
     @Column(nullable = true)
-    private Integer hire_date;
+    private Date hire_date;
 
     @OneToMany(mappedBy = "professor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ClassroomReservation> classroomReservation;

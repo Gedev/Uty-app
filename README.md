@@ -1,8 +1,9 @@
 # Uty-app
-Technobel final project java/angular
+
+##A university java/angular Project 
 
 
-## Fonctionnalités :
+### Functionalities :
 
 - Réservation local
 

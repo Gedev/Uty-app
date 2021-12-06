@@ -12,6 +12,9 @@ import technobel.gedev.utyapp.repository.ProfessorRepository;
 import technobel.gedev.utyapp.repository.StudentRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.Calendar;
+import java.util.Date;
+
 @Component
 public class DatabaseFiller implements InitializingBean {
 
@@ -31,75 +34,8 @@ public class DatabaseFiller implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() {
-        saveUsers();
         saveClassrooms();
         saveClassroomsReservations();
-    }
-
-    public void saveUsers(){
-        Student st = new Student();
-        st.setUsername("Johnn");
-        st.setPassword( encoder.encode("pass")) ;
-        st.setFirstname("John");
-        st.setLastname("Doe");
-        st.setBirthdate("11201992");
-        studentRepository.save( st );
-
-        st = new Student();
-        st.setUsername("Jerome");
-        st.setPassword( encoder.encode("pass")) ;
-        st.setFirstname("Jérôme");
-        st.setLastname("Widart");
-        st.setBirthdate("11201992");
-        studentRepository.save( st );
-
-        st = new Student();
-        st.setUsername("Dylan");
-        st.setPassword( encoder.encode("pass")) ;
-        st.setFirstname("Dylan");
-        st.setLastname("Haas");
-        st.setBirthdate("11201992");
-        studentRepository.save( st );
-
-        st = new Student();
-        st.setUsername("Samirah");
-        st.setPassword( encoder.encode("pass")) ;
-        st.setFirstname("Samirah");
-        st.setLastname("Masimina");
-        st.setBirthdate("11201992");
-        studentRepository.save( st );
-
-        st = new Student();
-        st.setUsername("Pacifique");
-        st.setPassword( encoder.encode("pass")) ;
-        st.setFirstname("Pacifique");
-        st.setLastname("NGabo");
-        st.setBirthdate("11201992");
-        studentRepository.save( st );
-
-        Professor p = new Professor();
-        p.setUsername("professor01");
-        p.setPassword( encoder.encode("pass")) ;
-        p.setFirstname("Alex");
-        p.setLastname("Kimts");
-        p.setBirthdate("11201992");
-        professorRepository.save( p );
-
-        p = new Professor();
-        p.setUsername("professor02");
-        p.setPassword( encoder.encode("pass")) ;
-        p.setFirstname("Severus");
-        p.setLastname("Rogue");
-        p.setBirthdate("11201992");
-        professorRepository.save( p );
-
-        p = new Professor();
-        p.setUsername("professor03");
-        p.setPassword( encoder.encode("pass")) ;
-        p.setFirstname("Dolores");
-        p.setLastname("Omb");
-        p.setBirthdate("11201992");
-        professorRepository.save( p );
     }
 
     /*

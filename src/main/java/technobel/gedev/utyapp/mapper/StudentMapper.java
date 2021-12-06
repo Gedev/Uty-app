@@ -15,6 +15,7 @@ public class StudentMapper {
         return StudentDTO.builder()
                 .id(studentEntity.getId())
                 .username(studentEntity.getUsername())
+                .password(studentEntity.getPassword())
                 .firstname(studentEntity.getFirstname())
                 .lastname((studentEntity.getLastname()))
                 .birthdate(studentEntity.getBirthdate())

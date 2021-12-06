@@ -29,5 +29,7 @@ public abstract class User {
     private String lastname;
 
     @Column(nullable = true)
-    private String birthdate;
+    @Basic
+    @Temporal(TemporalType.DATE)
+    private java.util.Date birthdate;
 }

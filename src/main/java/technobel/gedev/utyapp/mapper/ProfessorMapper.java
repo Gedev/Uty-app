@@ -1,10 +1,12 @@
 package technobel.gedev.utyapp.mapper;
 
+import org.springframework.stereotype.Service;
 import technobel.gedev.utyapp.models.dto.ProfessorDTO;
 import technobel.gedev.utyapp.models.entity.Professor;
 
 import java.util.stream.Collectors;
 
+@Service
 public class ProfessorMapper {
 
     private final ClassroomReservationMapper clrMapper;
@@ -22,6 +24,9 @@ public class ProfessorMapper {
                 .username(professorEntity.getUsername())
                 .password(professorEntity.getPassword())
                 .firstname(professorEntity.getFirstname())
+                .lastname(professorEntity.getLastname())
+                .hire_date(professorEntity.getHire_date())
+                .birthdate(professorEntity.getBirthdate())
                 .reservations(
                         professorEntity.getClassroomReservation()
                                 .stream()

@@ -1,6 +1,5 @@
 package technobel.gedev.utyapp.controllers;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import technobel.gedev.utyapp.models.dto.StudentDTO;
@@ -36,11 +35,11 @@ public class StudentController {
     }
 
     @PostMapping("/add")
-    public StudentDTO insert(@Valid @RequestBody StudentForm form, @RequestHeader HttpHeaders headers){
+    public StudentDTO insert(@Valid @RequestBody StudentForm form){
 
-        for (String key : headers.keySet()) {
-            System.out.println( headers.get(key) );
-        }
+//        for (String key : headers.keySet()) {
+//            System.out.println( headers.get(key) );
+//        }
 
         return service.insert(form);
     }

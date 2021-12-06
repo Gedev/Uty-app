@@ -41,17 +41,33 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentDTO insert(StudentForm form) {
         // TODO
-        Student toUpdate = studentRepository.findByUsername(form.getUsername())
-                .orElseThrow(ElementNotFoundException::new);
 
-        toUpdate.setUsername(form.getUsername());
-        toUpdate.setPassword(form.getPassword());
-        toUpdate.setFirstname(form.getFirstname());
-        toUpdate.setLastname(form.getLastname());
-        toUpdate.setBirthdate(form.getBirthdate());
+        Student studenttoInsert = mapper.formToEntity(form);
+        studenttoInsert.setUsername(form.getUsername());
+        studenttoInsert.setPassword(form.getPassword());
+        studenttoInsert.setFirstname(form.getFirstname());
+        studenttoInsert.setLastname(form.getLastname());
+        studenttoInsert.setBirthdate(form.getBirthdate());
 
-        return mapper.toDto(toUpdate);
+        studenttoInsert = studentRepository.save(studenttoInsert);
+
+        return mapper.toDto(studenttoInsert);
     }
+
+//    @Override
+//    public StudentDTO update(StudentForm form) {
+//        // TODO
+//        Student toUpdate = studentRepository.findByUsername(form.getUsername())
+//                .orElseThrow(ElementNotFoundException::new);
+//
+//        toUpdate.setUsername(form.getUsername());
+//        toUpdate.setPassword(form.getPassword());
+//        toUpdate.setFirstname(form.getFirstname());
+//        toUpdate.setLastname(form.getLastname());
+//        toUpdate.setBirthdate(form.getBirthdate());
+//
+//        return mapper.toDto(toUpdate);
+//    }
 
     @Override
     public StudentDTO delete(Long id) {

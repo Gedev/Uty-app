@@ -3,8 +3,7 @@ package technobel.gedev.utyapp.models.forms;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
-
-import javax.validation.constraints.NotBlank;
+import java.util.Date;
 
 @Data
 @Validated
@@ -19,13 +18,6 @@ public class StudentForm {
 
     private String lastname;
 
-    private String birthdate;
-
-
-
-
-
-
-
+    private Date birthdate;
 
 }
