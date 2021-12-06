@@ -5,9 +5,6 @@
 
 ### Functionalities :
 
-- Réservation local
+- room reservation
 
-
-
-=> L'heure : sous quel format stocker l'heure pour la réservation de local
 
