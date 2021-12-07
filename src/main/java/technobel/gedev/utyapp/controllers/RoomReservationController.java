@@ -25,4 +25,9 @@ public class RoomReservationController {
     public ResponseEntity<List<ClassroomReservationDTO>> getAll(){
         return ResponseEntity.ok(service.getAll());
     }
+
+    @GetMapping(value = "/assignment", params = "status")
+    public ResponseEntity<List<ClassroomReservationDTO>> getAllPendingReservations(boolean status){
+        return ResponseEntity.ok(service.getAllPendingReservations(status));
+    }
 }

@@ -11,6 +11,7 @@ public class ClassroomReservationDTO {
     private String room_num;
     private int start_time;
     private int end_time;
+    private boolean status;
 
     private ClassroomReservationDTO.ProfessorDTO professor;
 

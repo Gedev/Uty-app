@@ -23,6 +23,9 @@ public class ClassroomReservation {
     @Column
     private int end_time;
 
+    @Column(columnDefinition = "boolean default true")
+    private boolean status;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "professor_id")
     private Professor professor;

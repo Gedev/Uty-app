@@ -37,10 +37,6 @@ public class StudentController {
     @PostMapping("/add")
     public StudentDTO insert(@Valid @RequestBody StudentForm form){
 
-//        for (String key : headers.keySet()) {
-//            System.out.println( headers.get(key) );
-//        }
-
         return service.insert(form);
     }
 

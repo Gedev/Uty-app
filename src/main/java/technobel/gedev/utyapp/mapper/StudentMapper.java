@@ -27,9 +27,9 @@ public class StudentMapper {
             return null;
 
         Student student = new Student();
-//        student.getUsername(form.getUsername());
-//        student.getFirstname(form.getFirstname());
-//        student.getLastname(form.getLastname());
+        student.setUsername(form.getUsername());
+        student.setFirstname(form.getFirstname());
+        student.setLastname(form.getLastname());
         return student;
     }
 }

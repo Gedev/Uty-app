@@ -17,6 +17,7 @@ public class ClassroomReservationMapper {
                 .start_time(clrEntity.getStart_time())
                 .end_time(clrEntity.getEnd_time())
                 .professor(toInnerDTO(clrEntity.getProfessor()))
+                .status(clrEntity.isStatus())
                 .build();
     }
 

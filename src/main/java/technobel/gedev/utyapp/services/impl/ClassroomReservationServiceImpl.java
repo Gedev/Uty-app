@@ -39,6 +39,14 @@ public class ClassroomReservationServiceImpl implements ClassroomReservationServ
     }
 
     @Override
+    public List<ClassroomReservationDTO> getAllPendingReservations(boolean status) {
+        return clrRepository.getAllPendingReservations(status)
+                .stream()
+                .map(clrMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public ClassroomReservationDTO delete(Long id) {
         return null;
     }
