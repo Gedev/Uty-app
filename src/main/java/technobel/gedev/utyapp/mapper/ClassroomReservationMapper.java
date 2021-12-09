@@ -10,7 +10,7 @@ public class ClassroomReservationMapper {
     public ClassroomReservationDTO toDto(ClassroomReservation clrEntity) {
         if (clrEntity == null)
             return null;
-
+        System.out.println(clrEntity);
         return ClassroomReservationDTO.builder()
                 .id(clrEntity.getId())
                 .room_num(clrEntity.getRoom_num())
@@ -27,6 +27,7 @@ public class ClassroomReservationMapper {
 
         return ClassroomReservationDTO.ProfessorDTO.builder()
                 .username( entity.getUsername() )
+                .id(entity.getId())
                 .build();
     }
 }

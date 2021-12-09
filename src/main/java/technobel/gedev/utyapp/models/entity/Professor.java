@@ -17,7 +17,4 @@ public class Professor extends User {
 
     @OneToMany(mappedBy = "professor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ClassroomReservation> classroomReservation;
-
-//      @ElementCollection(fetch = FetchType.EAGER)
-//      private List<String> professor_sections;
 }

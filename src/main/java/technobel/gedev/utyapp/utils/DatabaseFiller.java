@@ -4,38 +4,28 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 import technobel.gedev.utyapp.models.entity.Classroom;
 import technobel.gedev.utyapp.models.entity.ClassroomReservation;
-import technobel.gedev.utyapp.models.entity.Professor;
-import technobel.gedev.utyapp.models.entity.Student;
-import technobel.gedev.utyapp.repository.ClassroomRepository;
-import technobel.gedev.utyapp.repository.ClassroomReservationRepository;
-import technobel.gedev.utyapp.repository.ProfessorRepository;
-import technobel.gedev.utyapp.repository.StudentRepository;
+import technobel.gedev.utyapp.models.entity.RoomEquipment;
+import technobel.gedev.utyapp.repository.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.Calendar;
-import java.util.Date;
 
 @Component
 public class DatabaseFiller implements InitializingBean {
 
-    private final StudentRepository studentRepository;
-    private final PasswordEncoder encoder;
-    private final ProfessorRepository professorRepository;
     private final ClassroomRepository classroomRepository;
     private final ClassroomReservationRepository clrRepository;
+    private final RoomEquipmentRepository eqRepository;
 
-    public DatabaseFiller(StudentRepository studentRepository, PasswordEncoder encoder, ProfessorRepository professorRepository, ClassroomRepository classroomRepository, ClassroomReservationRepository clrRepository) {
-        this.studentRepository = studentRepository;
-        this.professorRepository = professorRepository;
+    public DatabaseFiller(StudentRepository studentRepository, PasswordEncoder encoder, ProfessorRepository professorRepository, ClassroomRepository classroomRepository, ClassroomReservationRepository clrRepository, RoomEquipmentRepository eqRepository) {
         this.classroomRepository = classroomRepository;
-        this.encoder = encoder;
         this.clrRepository = clrRepository;
+        this.eqRepository = eqRepository;
     }
 
     @Override
     public void afterPropertiesSet() {
         saveClassrooms();
         saveClassroomsReservations();
+        roomEquipment();
     }
 
     /*
@@ -45,9 +35,30 @@ public class DatabaseFiller implements InitializingBean {
      */
     public void saveClassrooms(){
         Classroom cl = new Classroom();
-        cl.setClass_num(1);
+        cl.setRoom_num("1");
         cl.setSurface(20);
         classroomRepository.save( cl );
+    }
+
+    public void roomEquipment(){
+        RoomEquipment re = new RoomEquipment();
+        re.setHas_blackboard(false);
+        re.setHas_interactive_whiteboard(true);
+        re.setHas_projector(true);
+        re.setHas_professor_pc(true);
+        re.setHas_speakers(false);
+        re.setStudents_pc(0);
+        eqRepository.save( re );
+
+        re = new RoomEquipment();
+        re.setHas_whiteboard(true);
+        re.setHas_blackboard(false);
+        re.setHas_interactive_whiteboard(false);
+        re.setHas_projector(true);
+        re.setHas_professor_pc(true);
+        re.setHas_speakers(false);
+        re.setStudents_pc(0);
+        eqRepository.save( re );
     }
 
     public void saveClassroomsReservations() {

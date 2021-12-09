@@ -1,13 +1,16 @@
 package technobel.gedev.utyapp.models.entity;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "classroom_reservation")
 @Getter @Setter
+@ToString
 public class ClassroomReservation {
 
     @Id

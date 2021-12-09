@@ -4,10 +4,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Getter @Setter
 @Table(name = "classroom")
+@Getter @Setter
 public class Classroom {
 
     @Id
@@ -15,10 +16,13 @@ public class Classroom {
     private Long id;
 
     @Column
-    private int class_num;
+    private String room_num;
 
     @Column
     private int surface;
+
+    @ManyToMany(mappedBy = "classrooms")
+    private Set<RoomEquipment> roomEquipments;
 
 
 }

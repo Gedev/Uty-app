@@ -3,9 +3,7 @@ package technobel.gedev.utyapp.controllers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import technobel.gedev.utyapp.models.dto.ProfessorDTO;
-import technobel.gedev.utyapp.models.dto.StudentDTO;
 import technobel.gedev.utyapp.models.forms.ProfessorForm;
-import technobel.gedev.utyapp.models.forms.StudentForm;
 import technobel.gedev.utyapp.services.spec.ProfessorService;
 
 import javax.validation.Valid;
