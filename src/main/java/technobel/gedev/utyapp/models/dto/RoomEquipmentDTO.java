@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Data
 @Builder
-public class RoomEquipment {
+public class RoomEquipmentDTO {
 
     private Long id;
     boolean has_whiteboard;

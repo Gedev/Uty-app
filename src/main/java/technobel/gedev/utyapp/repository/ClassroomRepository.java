@@ -7,6 +7,7 @@ import technobel.gedev.utyapp.models.entity.Classroom;
 import java.util.List;
 
 public interface ClassroomRepository extends JpaRepository<Classroom, Long> {
-    @Query(value = "SELECT * FROM classroom c WHERE c.id = CAST(room_num AS integer)", nativeQuery = true)
+//    @Query(value = "SELECT c FROM Classroom c WHERE CAST(c.room_num AS integer) = ?1 ", nativeQuery = true)
+    @Query(value = "SELECT * FROM Classroom c WHERE c.room_num = ?1", nativeQuery = true)
     List<Classroom> searchClassroom(long id);
 }

@@ -8,6 +8,9 @@ import technobel.gedev.utyapp.models.entity.RoomEquipment;
 import technobel.gedev.utyapp.repository.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.List;
+import java.util.Set;
+
 @Component
 public class DatabaseFiller implements InitializingBean {
 
@@ -25,47 +28,68 @@ public class DatabaseFiller implements InitializingBean {
     public void afterPropertiesSet() {
         saveClassrooms();
         saveClassroomsReservations();
-        roomEquipment();
+        saveRoomEquipment();
     }
 
     /*
     CLASSROOMS
-        int class_num;
+        String room_num;
         int surface;
      */
     public void saveClassrooms(){
-        Classroom cl = new Classroom();
-        cl.setRoom_num("1");
-        cl.setSurface(20);
-        classroomRepository.save( cl );
+//        Classroom cl = new Classroom();
+//        cl.setRoom_num("001");
+//        cl.setSurface(15);
+//        classroomRepository.save( cl );
+//
+//        RoomEquipment re1 = new RoomEquipment();
+//        re1.setName("projector");
+//        re1.setId(4L);
+//
+//
+//        cl = new Classroom();
+//        cl.setRoom_num("101");
+//        cl.setSurface(25);
+//        cl.setRoomEquipments(Set.of(re1));
+//        classroomRepository.save( cl );
+
     }
 
-    public void roomEquipment(){
-        RoomEquipment re = new RoomEquipment();
-        re.setHas_blackboard(false);
-        re.setHas_interactive_whiteboard(true);
-        re.setHas_projector(true);
-        re.setHas_professor_pc(true);
-        re.setHas_speakers(false);
-        re.setStudents_pc(0);
-        eqRepository.save( re );
-
-        re = new RoomEquipment();
-        re.setHas_whiteboard(true);
-        re.setHas_blackboard(false);
-        re.setHas_interactive_whiteboard(false);
-        re.setHas_projector(true);
-        re.setHas_professor_pc(true);
-        re.setHas_speakers(false);
-        re.setStudents_pc(0);
-        eqRepository.save( re );
+    public void saveRoomEquipment(){
+//        RoomEquipment re = new RoomEquipment();
+//        re.setName("blackboard");
+//        eqRepository.save( re );
+//
+//        re = new RoomEquipment();
+//        re.setName("whiteboard");
+//        eqRepository.save( re );
+//
+//        re = new RoomEquipment();
+//        re.setName("interactive_whiteboard");
+//        eqRepository.save( re );
+//
+//        re = new RoomEquipment();
+//        re.setName("projector");
+//        eqRepository.save( re );
+//
+//        re = new RoomEquipment();
+//        re.setName("professor_personal_pc");
+//        eqRepository.save( re );
+//
+//        re = new RoomEquipment();
+//        re.setName("students_personal_pc");
+//        eqRepository.save( re );
+//
+//        re = new RoomEquipment();
+//        re.setName("speakers");
+//        eqRepository.save( re );
     }
 
     public void saveClassroomsReservations() {
-        ClassroomReservation clr = new ClassroomReservation();
-        clr.setRoom_num("101");
-        clr.setStart_time(830);
-        clr.setEnd_time(1030);
-        clrRepository.save( clr );
+//        ClassroomReservation clr = new ClassroomReservation();
+//        clr.setRoom_num("101");
+//        clr.setStart_time(830);
+//        clr.setEnd_time(1030);
+//        clrRepository.save( clr );
     }
 }

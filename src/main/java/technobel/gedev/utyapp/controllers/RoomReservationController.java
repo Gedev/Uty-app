@@ -8,6 +8,7 @@ import technobel.gedev.utyapp.services.spec.ClassroomReservationService;
 import technobel.gedev.utyapp.services.spec.ClassroomService;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/classrooms_reservation")
@@ -31,15 +32,13 @@ public class RoomReservationController {
         return ResponseEntity.ok(classroomReservationService.getAll());
     }
 
-    // CETTE REQUÊTE FONCTIONNE
     @GetMapping(value = "/assignment", params = "status")
     public ResponseEntity<List<ClassroomReservationDTO>> getAllPendingReservations(boolean status){
         return ResponseEntity.ok(classroomReservationService.getAllPendingReservations(status));
     }
 
-    // CETTE REQUÊTE NE FONCTIONNE PAS
     @GetMapping(value = "/assignment/{id}")
-    public ResponseEntity<List<ClassroomDTO>> searchRooms(@PathVariable long id) {
+    public ResponseEntity<Set<ClassroomDTO>> searchRooms(@PathVariable long id) {
         return ResponseEntity.ok(classroomService.searchRooms(id));
     }
 }

@@ -14,6 +14,13 @@ public class ClassroomDTO {
     private String room_num;
     private int surface;
 
-    private Set<RoomEquipment> roomEquipmentList;
+    private Set<ClassroomDTO.RoomEquipmentDTO> roomEquipmentList;
+
+    @Data
+    @Builder
+    public static class RoomEquipmentDTO {
+        private long id;
+        private String name;
+    }
 
 }

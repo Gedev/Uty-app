@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "classroom_reservation")
@@ -28,6 +29,9 @@ public class ClassroomReservation {
 
     @Column(columnDefinition = "boolean default true")
     private boolean status;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<RoomEquipment> roomEquipments;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "professor_id")

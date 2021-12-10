@@ -24,5 +24,4 @@ public class Classroom {
     @ManyToMany(mappedBy = "classrooms")
     private Set<RoomEquipment> roomEquipments;
 
-
 }
