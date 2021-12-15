@@ -1,6 +1,7 @@
 package technobel.gedev.utyapp.services.spec;
 
 import technobel.gedev.utyapp.models.dto.ClassroomDTO;
+import technobel.gedev.utyapp.models.forms.ClassroomAssignmentForm;
 
 import java.util.List;
 import java.util.Set;
@@ -11,7 +12,7 @@ public interface ClassroomService {
 
     Set<ClassroomDTO> getAll();
 
-    Set<ClassroomDTO> searchRooms(Long id);
+    List<ClassroomDTO> searchClassroom(ClassroomAssignmentForm classAssignForm);
 }
 
 

@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,9 +17,6 @@ public class RoomEquipment {
 
     @Column
     String name;
-
-    @ManyToMany
-    private List<ClassroomReservation> classroomReservations;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Classroom> classrooms;

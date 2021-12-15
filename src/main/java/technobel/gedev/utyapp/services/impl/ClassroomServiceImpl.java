@@ -4,9 +4,11 @@ import org.springframework.stereotype.Service;
 import technobel.gedev.utyapp.exceptions.models.ElementNotFoundException;
 import technobel.gedev.utyapp.mapper.ClassroomMapper;
 import technobel.gedev.utyapp.models.dto.ClassroomDTO;
+import technobel.gedev.utyapp.models.forms.ClassroomAssignmentForm;
 import technobel.gedev.utyapp.repository.ClassroomRepository;
 import technobel.gedev.utyapp.services.spec.ClassroomService;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -38,10 +40,19 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public Set<ClassroomDTO> searchRooms(Long id) {
-        return classroomRepository.searchClassroom(id)
-                .stream()
-                .map(classroomMapper::toDto)
-                .collect(Collectors.toSet());
+    public List<ClassroomDTO> searchClassroom(ClassroomAssignmentForm classAssignForm) {
+        long size = classAssignForm.getRoomEquipment().size();
+
+        if(size != 0) {
+            return classroomRepository.searchClassroom(classAssignForm.getRoomEquipment(), size )
+                    .stream()
+                    .map(classroomMapper::toDto)
+                    .collect(Collectors.toList());
+        } else {
+            return classroomRepository.findAll()
+                    .stream()
+                    .map(classroomMapper::toDto)
+                    .collect(Collectors.toList());
+        }
     }
 }

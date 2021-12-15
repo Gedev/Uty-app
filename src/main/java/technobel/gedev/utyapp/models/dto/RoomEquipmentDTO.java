@@ -11,13 +11,7 @@ import java.util.Set;
 public class RoomEquipmentDTO {
 
     private Long id;
-    boolean has_whiteboard;
-    boolean has_blackboard;
-    boolean has_projector;
-    boolean has_professor_pc;
-    int students_pc;
-    boolean has_interactive_whiteboard;
-    boolean has_speakers;
+    String name;
 
     private Set<Classroom> classrooms;
 }

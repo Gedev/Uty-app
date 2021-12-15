@@ -25,7 +25,6 @@ public class ProfessorMapper {
         return ProfessorDTO.builder()
                 .id(professorEntity.getId())
                 .username(professorEntity.getUsername())
-                .password(professorEntity.getPassword())
                 .firstname(professorEntity.getFirstname())
                 .lastname(professorEntity.getLastname())
                 .hire_date(professorEntity.getHire_date())

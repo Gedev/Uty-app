@@ -2,9 +2,7 @@ package technobel.gedev.utyapp.mapper;
 
 import org.springframework.stereotype.Service;
 import technobel.gedev.utyapp.models.dto.ClassroomDTO;
-import technobel.gedev.utyapp.models.dto.ClassroomReservationDTO;
 import technobel.gedev.utyapp.models.entity.Classroom;
-import technobel.gedev.utyapp.models.entity.Professor;
 import technobel.gedev.utyapp.models.entity.RoomEquipment;
 
 import java.util.stream.Collectors;

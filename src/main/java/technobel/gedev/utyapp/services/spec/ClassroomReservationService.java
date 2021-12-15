@@ -1,7 +1,8 @@
 package technobel.gedev.utyapp.services.spec;
 
+import technobel.gedev.utyapp.models.dto.ClassroomDTO;
 import technobel.gedev.utyapp.models.dto.ClassroomReservationDTO;
-import technobel.gedev.utyapp.models.entity.Classroom;
+import technobel.gedev.utyapp.models.forms.ClassroomAssignmentForm;
 
 import java.util.List;
 

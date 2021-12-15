@@ -4,8 +4,7 @@ import org.springframework.stereotype.Service;
 import technobel.gedev.utyapp.exceptions.models.ElementNotFoundException;
 import technobel.gedev.utyapp.mapper.ClassroomReservationMapper;
 import technobel.gedev.utyapp.models.dto.ClassroomReservationDTO;
-import technobel.gedev.utyapp.models.dto.StudentDTO;
-import technobel.gedev.utyapp.models.entity.ClassroomReservation;
+import technobel.gedev.utyapp.models.forms.ClassroomAssignmentForm;
 import technobel.gedev.utyapp.repository.ClassroomReservationRepository;
 import technobel.gedev.utyapp.services.spec.ClassroomReservationService;
 

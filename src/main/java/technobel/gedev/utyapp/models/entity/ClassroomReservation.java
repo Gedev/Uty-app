@@ -1,17 +1,17 @@
 package technobel.gedev.utyapp.models.entity;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-
 import javax.persistence.*;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
 @Table(name = "classroom_reservation")
 @Getter @Setter
-@ToString
 public class ClassroomReservation {
 
     @Id
@@ -22,10 +22,10 @@ public class ClassroomReservation {
     private String room_num;
 
     @Column
-    private int start_time;
+    private LocalDateTime start_time;
 
     @Column
-    private int end_time;
+    private LocalDateTime end_time;
 
     @Column(columnDefinition = "boolean default true")
     private boolean status;

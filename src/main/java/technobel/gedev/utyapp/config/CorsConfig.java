@@ -12,7 +12,13 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:4200");
+                registry.addMapping("/**")
+                        .allowedOrigins("http://localhost:4200")
+                        .allowedMethods("GET", "POST", "OPTIONS", "DELETE", "PUT", "PATCH")
+                        .allowedHeaders("X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization")
+                        .exposedHeaders("Authorization")
+                        .allowCredentials(true);
+                ;
             }
         };
     }

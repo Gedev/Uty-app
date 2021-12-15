@@ -2,8 +2,12 @@ package technobel.gedev.utyapp.mapper;
 
 import org.springframework.stereotype.Service;
 import technobel.gedev.utyapp.models.dto.ClassroomReservationDTO;
+import technobel.gedev.utyapp.models.dto.RoomEquipmentDTO;
 import technobel.gedev.utyapp.models.entity.ClassroomReservation;
 import technobel.gedev.utyapp.models.entity.Professor;
+import technobel.gedev.utyapp.models.entity.RoomEquipment;
+
+import java.util.stream.Collectors;
 
 @Service
 public class ClassroomReservationMapper {
@@ -18,6 +22,10 @@ public class ClassroomReservationMapper {
                 .end_time(clrEntity.getEnd_time())
                 .professor(toInnerDTO(clrEntity.getProfessor()))
                 .status(clrEntity.isStatus())
+                .equipments(clrEntity.getRoomEquipments()
+                        .stream()
+                        .map(this::toInnerDTO)
+                        .collect(Collectors.toList()))
                 .build();
     }
 
@@ -26,8 +34,21 @@ public class ClassroomReservationMapper {
             return null;
 
         return ClassroomReservationDTO.ProfessorDTO.builder()
-                .username( entity.getUsername() )
                 .id(entity.getId())
+                .username( entity.getUsername() )
+                .firstname(entity.getFirstname())
+                .lastname( entity.getLastname())
+                .birthdate( entity.getBirthdate())
+                .build();
+    }
+
+    private RoomEquipmentDTO toInnerDTO(RoomEquipment entity){
+        if( entity == null )
+            return null;
+
+        return RoomEquipmentDTO.builder()
+                .id(entity.getId())
+                .name(entity.getName())
                 .build();
     }
 }

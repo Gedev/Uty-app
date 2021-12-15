@@ -4,9 +4,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import technobel.gedev.utyapp.models.dto.ClassroomDTO;
 import technobel.gedev.utyapp.models.dto.ClassroomReservationDTO;
+import technobel.gedev.utyapp.models.forms.ClassroomAssignmentForm;
 import technobel.gedev.utyapp.services.spec.ClassroomReservationService;
 import technobel.gedev.utyapp.services.spec.ClassroomService;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
 
@@ -37,8 +39,9 @@ public class RoomReservationController {
         return ResponseEntity.ok(classroomReservationService.getAllPendingReservations(status));
     }
 
-    @GetMapping(value = "/assignment/{id}")
-    public ResponseEntity<Set<ClassroomDTO>> searchRooms(@PathVariable long id) {
-        return ResponseEntity.ok(classroomService.searchRooms(id));
+    @PostMapping(value = "/search")
+    public ResponseEntity<List<ClassroomDTO>> searchRooms(@Valid @RequestBody ClassroomAssignmentForm classAssignform) {
+        System.out.println("CONTROLLER SEARCHROOMS" + classAssignform);
+        return ResponseEntity.ok(classroomService.searchClassroom(classAssignform));
     }
 }
