@@ -24,10 +24,6 @@ public class StudentController {
         return ResponseEntity.ok(service.getOne(id));
     }
 
-    //    GET http://localhost:8080/students
-    //    GET http://localhost:8080/students/
-    //    GET http://localhost:8080/students/all
-    //    @RequestMapping(value = "/all", method = RequestMethod.GET)
     @GetMapping(path = {"","/","/all"})
     public ResponseEntity<List<StudentDTO>> getAll(){
         List<StudentDTO> list = service.getAll();

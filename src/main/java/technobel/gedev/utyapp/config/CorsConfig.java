@@ -18,7 +18,7 @@ public class CorsConfig {
                         .allowedHeaders("X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization")
                         .exposedHeaders("Authorization")
                         .allowCredentials(true);
-                ;
+
             }
         };
     }

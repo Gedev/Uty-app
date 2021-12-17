@@ -1,16 +1,18 @@
 package technobel.gedev.utyapp.controllers;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import technobel.gedev.utyapp.models.dto.ClassroomDTO;
 import technobel.gedev.utyapp.models.dto.ClassroomReservationDTO;
-import technobel.gedev.utyapp.models.forms.ClassroomAssignmentForm;
+import technobel.gedev.utyapp.models.forms.AssignClassroomReservationForm;
+import technobel.gedev.utyapp.models.forms.SearchClassroomForm;
+import technobel.gedev.utyapp.models.forms.ClassroomReservationForm;
 import technobel.gedev.utyapp.services.spec.ClassroomReservationService;
 import technobel.gedev.utyapp.services.spec.ClassroomService;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/classrooms_reservation")
@@ -35,13 +37,30 @@ public class RoomReservationController {
     }
 
     @GetMapping(value = "/assignment", params = "status")
-    public ResponseEntity<List<ClassroomReservationDTO>> getAllPendingReservations(boolean status){
+    public ResponseEntity<List<ClassroomReservationDTO>> getAllPendingReservations(boolean status) {
         return ResponseEntity.ok(classroomReservationService.getAllPendingReservations(status));
     }
 
-    @PostMapping(value = "/search")
-    public ResponseEntity<List<ClassroomDTO>> searchRooms(@Valid @RequestBody ClassroomAssignmentForm classAssignform) {
-        System.out.println("CONTROLLER SEARCHROOMS" + classAssignform);
-        return ResponseEntity.ok(classroomService.searchClassroom(classAssignform));
+    @PostMapping(value = "/create")
+    public ResponseEntity<ClassroomReservationDTO> insert(@Valid @RequestBody ClassroomReservationForm classReservationgnform) {
+        return ResponseEntity.ok(classroomReservationService.create(classReservationgnform));
     }
+
+    @PostMapping(value = "/search")
+    public ResponseEntity<List<ClassroomDTO>> searchRooms(@Valid @RequestBody SearchClassroomForm searchClassroomForm) {
+        System.out.println("CONTROLLER SEARCHROOMS" + searchClassroomForm);
+        return ResponseEntity.ok(classroomService.searchClassroom(searchClassroomForm));
+    }
+
+    @PatchMapping(path = { "/assignClassroom" }, params = {"reservId"})
+    public ResponseEntity<ClassroomReservationDTO> assignClassroom(@RequestParam Long reservId, @RequestBody AssignClassroomReservationForm form) {
+        System.out.println("AssignClassroom");
+        return ResponseEntity.ok(classroomReservationService.assignClassroom(reservId, form));
+    }
+
+//    @PatchMapping("/assignClassroom")
+//    public ResponseEntity<ClassroomReservationDTO> testPatch() {
+//        System.out.println("test Patch");
+//        return null;
+//    }
 }

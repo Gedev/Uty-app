@@ -4,19 +4,23 @@ import lombok.Data;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalTime;
 import java.util.List;
 
 @Data
 @Validated
-public class ClassroomAssignmentForm {
+public class SearchClassroomForm {
 
     @NotNull
     int id_reservation;
 
     @NotNull
-    String start_time;
+    LocalTime start_time;
 
-    String end_time;
+    @NotNull
+    LocalTime end_time;
+
+    int size;
 
     @NotNull
     List<Long> roomEquipment;

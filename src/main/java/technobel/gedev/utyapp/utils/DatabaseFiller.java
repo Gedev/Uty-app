@@ -9,7 +9,9 @@ import technobel.gedev.utyapp.models.entity.RoomEquipment;
 import technobel.gedev.utyapp.repository.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -110,8 +112,9 @@ public class DatabaseFiller implements InitializingBean {
 //        dayOfMonth – the day-of-month to represent, from 1 to 31
 //        hour – the hour-of-day to represent, from 0 to 23
 //        minute – the minute-of-hour to represent, from 0 to 59
-        clr.setStart_time(LocalDateTime.of(2021,12, 22, 10, 30));
-        clr.setEnd_time(LocalDateTime.of(2021,12, 22, 12, 30));
+        clr.setDate(LocalDate.of(2021, 12, 22));
+        clr.setStart_time(LocalTime.of(10,30, 0));
+        clr.setEnd_time(LocalTime.of(12,30, 0));
         clr.setRoomEquipments(List.of(re1));
         clrRepository.save( clr );
     }

@@ -9,11 +9,10 @@ import java.util.stream.Collectors;
 
 @Service
 public class ClassroomMapper {
-    //TODO
     public ClassroomDTO toDto(Classroom clrEntity) {
         if (clrEntity == null)
             return null;
-        System.out.println("CLASSROOM ENTITY" + clrEntity);
+
         return ClassroomDTO.builder()
                 .id(clrEntity.getId())
                 .room_num(clrEntity.getRoom_num())

@@ -6,6 +6,7 @@ import technobel.gedev.utyapp.models.dto.RoomEquipmentDTO;
 import technobel.gedev.utyapp.models.entity.ClassroomReservation;
 import technobel.gedev.utyapp.models.entity.Professor;
 import technobel.gedev.utyapp.models.entity.RoomEquipment;
+import technobel.gedev.utyapp.models.forms.ClassroomReservationForm;
 
 import java.util.stream.Collectors;
 
@@ -29,7 +30,7 @@ public class ClassroomReservationMapper {
                 .build();
     }
 
-    private ClassroomReservationDTO.ProfessorDTO toInnerDTO(Professor entity){
+    private ClassroomReservationDTO.ProfessorDTO toInnerDTO(Professor entity) {
         if( entity == null )
             return null;
 
@@ -42,7 +43,7 @@ public class ClassroomReservationMapper {
                 .build();
     }
 
-    private RoomEquipmentDTO toInnerDTO(RoomEquipment entity){
+    private RoomEquipmentDTO toInnerDTO(RoomEquipment entity) {
         if( entity == null )
             return null;
 
@@ -50,5 +51,17 @@ public class ClassroomReservationMapper {
                 .id(entity.getId())
                 .name(entity.getName())
                 .build();
+    }
+
+    public ClassroomReservation formtoEntity(ClassroomReservationForm form) {
+        if(form == null)
+            return null;
+
+        ClassroomReservation entity = new ClassroomReservation();
+        entity.setDate(form.getDate());
+        entity.setStart_time(form.getStart_time());
+        entity.setEnd_time(form.getEnd_time());
+
+        return entity;
     }
 }

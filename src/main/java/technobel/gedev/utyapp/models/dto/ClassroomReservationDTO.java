@@ -3,7 +3,9 @@ package technobel.gedev.utyapp.models.dto;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -11,9 +13,13 @@ import java.util.List;
 @Builder
 public class ClassroomReservationDTO {
     private long id;
+
+    @NotNull
+    private LocalDate date;
+
     private String room_num;
-    private LocalDateTime start_time;
-    private LocalDateTime end_time;
+    private LocalTime start_time;
+    private LocalTime end_time;
     private boolean status;
 
     private ClassroomReservationDTO.ProfessorDTO professor;
