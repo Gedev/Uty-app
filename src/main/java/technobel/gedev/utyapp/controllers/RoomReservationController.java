@@ -1,6 +1,5 @@
 package technobel.gedev.utyapp.controllers;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import technobel.gedev.utyapp.models.dto.ClassroomDTO;
@@ -20,6 +19,7 @@ public class RoomReservationController {
 
     private final ClassroomReservationService classroomReservationService;
     private final ClassroomService classroomService;
+
 
     public RoomReservationController(ClassroomReservationService service, ClassroomService classroomService) {
         this.classroomReservationService = service;
@@ -42,13 +42,12 @@ public class RoomReservationController {
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<ClassroomReservationDTO> insert(@Valid @RequestBody ClassroomReservationForm classReservationgnform) {
-        return ResponseEntity.ok(classroomReservationService.create(classReservationgnform));
+    public ResponseEntity<ClassroomReservationDTO> insert(@Valid @RequestBody ClassroomReservationForm form) {
+        return ResponseEntity.ok(classroomReservationService.create(form));
     }
 
     @PostMapping(value = "/search")
     public ResponseEntity<List<ClassroomDTO>> searchRooms(@Valid @RequestBody SearchClassroomForm searchClassroomForm) {
-        System.out.println("CONTROLLER SEARCHROOMS" + searchClassroomForm);
         return ResponseEntity.ok(classroomService.searchClassroom(searchClassroomForm));
     }
 
@@ -57,10 +56,4 @@ public class RoomReservationController {
         System.out.println("AssignClassroom");
         return ResponseEntity.ok(classroomReservationService.assignClassroom(reservId, form));
     }
-
-//    @PatchMapping("/assignClassroom")
-//    public ResponseEntity<ClassroomReservationDTO> testPatch() {
-//        System.out.println("test Patch");
-//        return null;
-//    }
 }

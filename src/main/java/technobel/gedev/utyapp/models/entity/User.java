@@ -25,6 +25,7 @@ public abstract class User {
 
     @Column(nullable = false)
     private String firstname;
+
     @Column(nullable = false)
     private String lastname;
 

@@ -18,6 +18,10 @@ public class Classroom {
     @Column
     private String room_num;
 
+    @Column(unique = true)
+    @OneToMany (mappedBy = "classroom")
+    private Set<ClassroomReservation> classroomReservations;
+
     @Column
     private int surface;
 

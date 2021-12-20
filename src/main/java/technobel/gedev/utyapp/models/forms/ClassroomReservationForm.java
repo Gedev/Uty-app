@@ -14,6 +14,8 @@ import java.util.List;
 @Validated
 public class ClassroomReservationForm {
 
+    int roomTypeId;
+
     @NotNull
     long reservedByProfessorId;
 
@@ -21,14 +23,13 @@ public class ClassroomReservationForm {
     LocalDate date;
 
     @NotNull
-    LocalTime start_time;
+    LocalTime startTime;
 
     @NotNull
-    LocalTime end_time;
+    LocalTime endTime;
 
-    @Min(1) @Max(300)
-    long size;
+    @Min(0) @Max(300)
+    short size;
 
-    @NotNull
     List<Long> roomEquipment;
 }

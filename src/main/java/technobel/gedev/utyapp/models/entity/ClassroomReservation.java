@@ -16,8 +16,9 @@ public class ClassroomReservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private String room_num;
+    @ManyToOne
+    @JoinColumn(name = "classroom_id", foreignKey = @ForeignKey(name = "FK_classroom_id"))
+    private Classroom classroom;
 
     @Column
     private LocalDate date;
@@ -27,6 +28,12 @@ public class ClassroomReservation {
 
     @Column
     private LocalTime end_time;
+
+    @Column (name = "roomType_id")
+    private int roomType_id;
+
+    @Column
+    private short size;
 
     @Column(columnDefinition = "boolean default true")
     private boolean status;

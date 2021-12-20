@@ -2,6 +2,7 @@ package technobel.gedev.utyapp.utils;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
+import technobel.gedev.utyapp.exceptions.models.ElementNotFoundException;
 import technobel.gedev.utyapp.models.entity.Classroom;
 import technobel.gedev.utyapp.models.entity.ClassroomReservation;
 import technobel.gedev.utyapp.models.entity.Professor;
@@ -10,7 +11,6 @@ import technobel.gedev.utyapp.repository.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
@@ -35,20 +35,28 @@ public class DatabaseFiller implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() {
-//        saveClassrooms();
-//        saveClassroomsReservations();
 //        saveRoomEquipment();
-//        saveProfessors();
+//
+//        saveProfessors("Alex", "Doe", "alex", "pass");
+//        saveProfessors("Ingrid", "Doe", "Ingrid", "pass");
+//        saveProfessors("Frédérique", "Doe", "Frederique", "pass");
+//        saveProfessors("Simon", "Doe", "Simon", "pass");
+//        saveProfessors("Gregory", "Doe", "Greg", "pass");
+//
+//        saveClassrooms("121", (short)30);
+//        saveClassrooms("123", (short)50);
+//        saveClassrooms("001", (short)20);
+//        saveClassrooms("002", (short)300);
+
     }
 
-    public void saveProfessors() {
+    public void saveProfessors(String firstname, String lastname, String username, String password) {
         Professor prof = new Professor();
-        prof.setFirstname("Teddy");
-        prof.setLastname("Leloup");
-        prof.setUsername("Ted");
-        prof.setPassword(encoder.encode("pass"));
-//        Date(int year, int month, int day)
-        prof.setBirthdate(new Date(2021, 12, 20));
+        prof.setFirstname(firstname);
+        prof.setLastname(lastname);
+        prof.setUsername(username);
+        prof.setPassword(encoder.encode(password));
+        prof.setBirthdate(new Date(1990, 12, 20));
         professorRepository.save(prof);
     }
 
@@ -57,19 +65,30 @@ public class DatabaseFiller implements InitializingBean {
         String room_num;
         int surface;
      */
-    public void saveClassrooms(){
+    public void saveClassrooms(String room_num, short capacity){
+        RoomEquipment re1 = eqRepository.findById(4L).orElseThrow(ElementNotFoundException::new);
+        RoomEquipment re2 = eqRepository.findById(2L).orElseThrow(ElementNotFoundException::new);
+
+        System.out.println("re1 " + re1);
+        System.out.println("re2" + re2);
+
         Classroom cl = new Classroom();
-        cl.setRoom_num("001");
-        cl.setSurface(15);
+        cl.setRoom_num(room_num);
+        cl.setSurface(capacity);
+        cl.setRoomEquipments(Set.of(re1, re2));
         classroomRepository.save( cl );
 
-        RoomEquipment re1 = eqRepository.getById(4L);
+//        cl = new Classroom();
+//        cl.setRoom_num("104");
+//        cl.setSurface(50);
+//        cl.setRoomEquipments(Set.of(re1));
+//        classroomRepository.save( cl );
 
-        cl = new Classroom();
-        cl.setRoom_num("102");
-        cl.setSurface(25);
-        cl.setRoomEquipments(Set.of(re1));
-        classroomRepository.save( cl );
+//        cl = new Classroom();
+//        cl.setRoom_num("104");
+//        cl.setSurface(45);
+//        cl.setRoomEquipments(Set.of(re2));
+//        classroomRepository.save( cl );
 
     }
 

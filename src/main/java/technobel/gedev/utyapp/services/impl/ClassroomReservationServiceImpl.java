@@ -82,7 +82,7 @@ public class ClassroomReservationServiceImpl implements ClassroomReservationServ
         ClassroomReservation clReserv = clrRepository.findById(reservation_id)
                 .orElseThrow(ElementNotFoundException::new);
 
-        clReserv.setRoom_num(classroom.getRoom_num());
+        clReserv.setClassroom(classroom);
 
         return  clrMapper.toDto( clrRepository.save(clReserv));
     }

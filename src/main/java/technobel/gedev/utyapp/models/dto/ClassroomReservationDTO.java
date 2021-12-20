@@ -16,12 +16,11 @@ public class ClassroomReservationDTO {
 
     @NotNull
     private LocalDate date;
-
-    private String room_num;
     private LocalTime start_time;
     private LocalTime end_time;
     private boolean status;
 
+    private ClassroomReservationDTO.ClassroomDTO classroom;
     private ClassroomReservationDTO.ProfessorDTO professor;
 
     @Data
@@ -33,6 +32,14 @@ public class ClassroomReservationDTO {
         private String lastname;
         private Date birthdate;
         private Date hire_date;
+    }
+
+    @Data
+    @Builder
+    public static class ClassroomDTO {
+        private long id;
+        private String room_num;
+        private int surface;
     }
 
     private List<RoomEquipmentDTO> equipments;
