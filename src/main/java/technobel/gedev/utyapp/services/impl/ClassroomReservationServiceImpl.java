@@ -63,7 +63,7 @@ public class ClassroomReservationServiceImpl implements ClassroomReservationServ
                 .map(id -> roomEquipmentRepository.findById(id)
                         .orElseThrow(ElementNotFoundException::new)).toList();
         clReserv.setRoomEquipments(roomEquipmentList);
-
+        clReserv.setStatus(false);
         return clrMapper.toDto( clrRepository.save(clReserv) );
     }
 
@@ -83,7 +83,7 @@ public class ClassroomReservationServiceImpl implements ClassroomReservationServ
                 .orElseThrow(ElementNotFoundException::new);
 
         clReserv.setClassroom(classroom);
-
+        clReserv.setStatus(true);
         return  clrMapper.toDto( clrRepository.save(clReserv));
     }
 

@@ -3,7 +3,7 @@ package technobel.gedev.utyapp.models.dto;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -13,6 +13,6 @@ public class StudentDTO {
     private String password;
     private String firstname;
     private String lastname;
-    private Date birthdate;
+    private LocalDate birthdate;
     private boolean acquitted_of_school_fees;
 }

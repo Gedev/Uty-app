@@ -35,7 +35,7 @@ public class ClassroomReservation {
     @Column
     private short size;
 
-    @Column(columnDefinition = "boolean default true")
+    @Column(columnDefinition = "boolean default false")
     private boolean status;
 
     @ManyToMany(fetch = FetchType.EAGER)

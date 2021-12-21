@@ -17,7 +17,6 @@ public class ClassroomReservationMapper {
     public ClassroomReservationDTO toDto(ClassroomReservation clrEntity) {
         if (clrEntity == null)
             return null;
-        System.out.println("clrEntity.getDate : " + clrEntity.getDate());
         return ClassroomReservationDTO.builder()
                 .id(clrEntity.getId())
                 .start_time(clrEntity.getStart_time())

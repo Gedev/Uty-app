@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.time.LocalDate;
 
 @MappedSuperclass
 @Getter @Setter
@@ -30,7 +30,5 @@ public abstract class User {
     private String lastname;
 
     @Column(nullable = true)
-    @Basic
-    @Temporal(TemporalType.DATE)
-    private java.util.Date birthdate;
+    private LocalDate birthdate;
 }

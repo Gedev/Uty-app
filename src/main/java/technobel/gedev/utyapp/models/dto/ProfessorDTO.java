@@ -3,7 +3,7 @@ package technobel.gedev.utyapp.models.dto;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -14,8 +14,8 @@ public class ProfessorDTO {
     private String username;
     private String firstname;
     private String lastname;
-    private Date birthdate;
-    private Date hire_date;
+    private LocalDate birthdate;
+    private LocalDate hire_date;
 
     private List<ClassroomReservationDTO> reservations;
 }

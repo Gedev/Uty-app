@@ -12,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -56,7 +55,7 @@ public class DatabaseFiller implements InitializingBean {
         prof.setLastname(lastname);
         prof.setUsername(username);
         prof.setPassword(encoder.encode(password));
-        prof.setBirthdate(new Date(1990, 12, 20));
+        prof.setBirthdate(LocalDate.of(1990, 1, 1));
         professorRepository.save(prof);
     }
 
@@ -68,9 +67,6 @@ public class DatabaseFiller implements InitializingBean {
     public void saveClassrooms(String room_num, short capacity){
         RoomEquipment re1 = eqRepository.findById(4L).orElseThrow(ElementNotFoundException::new);
         RoomEquipment re2 = eqRepository.findById(2L).orElseThrow(ElementNotFoundException::new);
-
-        System.out.println("re1 " + re1);
-        System.out.println("re2" + re2);
 
         Classroom cl = new Classroom();
         cl.setRoom_num(room_num);

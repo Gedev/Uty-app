@@ -44,7 +44,7 @@ public class ClassroomServiceImpl implements ClassroomService {
         long size = classAssignForm.getRoomEquipment().size();
 
         if(size != 0) {
-            return classroomRepository.searchClassroom(classAssignForm.getRoomEquipment(), size )
+            return classroomRepository.searchClassroom(classAssignForm.getRoomEquipment(), size, classAssignForm.getDate(), classAssignForm.getStart_time(), classAssignForm.getEnd_time() )
                     .stream()
                     .map(classroomMapper::toDto)
                     .collect(Collectors.toList());

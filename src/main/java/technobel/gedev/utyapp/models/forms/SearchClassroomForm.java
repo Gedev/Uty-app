@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -19,6 +20,9 @@ public class SearchClassroomForm {
 
     @NotNull
     LocalTime end_time;
+
+    @NotNull
+    LocalDate date;
 
     int size;
 

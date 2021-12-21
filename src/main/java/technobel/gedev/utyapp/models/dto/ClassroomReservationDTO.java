@@ -6,7 +6,6 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -30,8 +29,8 @@ public class ClassroomReservationDTO {
         private String username;
         private String firstname;
         private String lastname;
-        private Date birthdate;
-        private Date hire_date;
+        private LocalDate birthdate;
+        private LocalDate hire_date;
     }
 
     @Data

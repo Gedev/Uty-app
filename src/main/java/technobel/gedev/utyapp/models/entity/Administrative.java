@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "administrative")
@@ -14,5 +14,5 @@ import java.sql.Date;
 public class Administrative extends User {
 
     @Column
-    private Date hire_date;
+    private LocalDate hire_date;
 }
